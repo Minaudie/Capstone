@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ListFragment">
+
+    <fragment
+        android:id="@+id/ListFragment"
+        android:name="com.example.mdorosz_capstone4.ListFragment"
+        android:label="@string/app_fancy_name"
+        tools:layout="@layout/list_fragment">
+        <action
+            android:id="@+id/action_ListFragment_to_ViewEntryFragment"
+            app:destination="@id/ViewEntryFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_EditSettingsFragment"
+            app:destination="@id/EditSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ViewEntryFragment"
+        android:name="com.example.mdorosz_capstone4.ViewEntryFragment"
+        android:label="{title}"
+        tools:layout="@layout/view_entry_fragment">
+        <argument
+            android:name="entry_id"
+            android:defaultValue="-1"
+            app:argType="integer"/>
+        <argument
+            android:name="title"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_ViewEntryFragment_to_EditSettingsFragment"
+            app:destination="@id/EditSettingsFragment"
+            app:popUpTo="@id/ViewEntryFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_ViewEntryFragment_to_EditEntryFragment"
+            app:destination="@id/EditEntryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EditSettingsFragment"
+        android:name="com.example.mdorosz_capstone4.EditSettingsFragment"
+        android:label="{title}"
+        tools:layout="@layout/edit_settings_fragment">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="entry_id"
+            android:defaultValue="-1"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_EditSettingsFragment_to_ListFragment"
+            app:destination="@id/ListFragment"
+            app:popUpTo="@id/ListFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/EditEntryFragment"
+        android:name="com.example.mdorosz_capstone4.EditEntryFragment"
+        android:label="Editing: {title}"
+        tools:layout="@layout/edit_entry_fragment">
+        <argument
+            android:name="entry_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_EditEntryFragment_to_EditSettingsFragment"
+            app:destination="@id/EditSettingsFragment" />
+        <action
+            android:id="@+id/action_EditEntryFragment_to_ViewEntryFragment"
+            app:destination="@id/ViewEntryFragment"
+            app:popUpTo="@id/ViewEntryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
